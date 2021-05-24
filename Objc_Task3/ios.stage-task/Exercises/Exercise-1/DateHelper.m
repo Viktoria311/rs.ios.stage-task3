@@ -25,10 +25,10 @@ case 12: return @"December";
 #pragma mark - Second
 
 - (long)dayFromDate:(NSString *)date {
+NSDateFormatter *my = [[[NSDateFormatter alloc] init] setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss'Z'"];
+if ([my dateFromString: date] == nil) return (long)(0);
 
-if ([NSDate dateFromString: date] == nil) return (long)(0);
-
-NSDate *realDate = [[[NSDateFormatter alloc] init] dateFromString: date]; 
+NSDate *realDate = [my dateFromString: date]; 
 //метод экземпляра dateFromString и инициализируем переданной строкой
 
 NSDateComponents *components = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate: realDate];
@@ -43,9 +43,10 @@ return (long)[components day];
 - (NSString *)getDayName:(NSDate*) date {
 
 /* берём Грегорианский календарь*/
-NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier: NSCalendarIdentifierGregorian];
 /* NSDateComponents позволяет вытащить из NSDate номер дня недели, день месяца и пр. */
-NSDateComponents *comps = [gregorian components:NSWeekdayCalendarUnit fromDate: date];
+NSDateComponents *comps = [gregorian components:NSCalendarUnitWeekday fromDate: date];
+
 
 //здесь должна быть проверка на реальность даты. если дата неверна return nil;
 
@@ -70,8 +71,8 @@ case 7: return @"Вс"; }
 #pragma mark - Fourth
 
 - (BOOL)isDateInThisWeek:(NSDate *)date {
-if ([[[NSCalendar currentCalendar] components: NSWeekCalendarUnit fromDate:[NSDate date]] weekOfYear] ==
-[[[NSCalendar currentCalendar] components: NSWeekCalendarUnit fromDate:date] weekOfYear]) ){return YES;}
+if ([[[NSCalendar currentCalendar] components: NSCalendarUnitWeekOfYear fromDate:[NSDate date]] weekOfYear] ==
+[[[NSCalendar currentCalendar] components: NSCalendarUnitWeekOfYear fromDate:date] weekOfYear]) {return YES;}
 
     return NO;
 }

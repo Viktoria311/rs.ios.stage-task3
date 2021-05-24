@@ -14,18 +14,18 @@ NSInteger a = 0;
     for (int i=0; i < [ratingArray count]-2; i++ ) {//внешний цикл, берем первый элемент
         //берем элемент под индексом i
         //есть элемент больше элемента под индексом i? если есть, то есть элемент больше этого? если да, ++а
-        for (int q = i+1; [[ratingArray oblectAtIndex: i] intValue] < [[ratingArray oblectAtIndex: q] intValue] && q < [ratingArray count]-1; q++ ){
+        for (int q = i+1; [[ratingArray objectAtIndex: i] intValue] < [[ratingArray objectAtIndex: q] intValue] && q < [ratingArray count]-1; q++ ){
            //есть ли элемент больше элемента под индексом q?
-            for (int w = q+1; [[ratingArray oblectAtIndex: q] intValue] < [[ratingArray oblectAtIndex: w] intValue] && w < [ratingArray count]; w++ ){
+            for (int w = q+1; [[ratingArray objectAtIndex: q] intValue] < [[ratingArray objectAtIndex: w] intValue] && w < [ratingArray count]; w++ ){
             ++a;//считаем количество команд
             }
         }
     }
 // проверка наоборот
     for (int j=0; j < [ratingArray count]-2; j++ ) {
-     for (int e = j+1; [[ratingArray oblectAtIndex: j] intValue] > [[ratingArray oblectAtIndex: e] intValue] && e < [ratingArray count]-1; e++ ){
+     for (int e = j+1; [[ratingArray objectAtIndex: j] intValue] > [[ratingArray objectAtIndex: e] intValue] && e < [ratingArray count]-1; e++ ){
            //есть ли элемент меньше элемента под индексом e?
-            for (int z = e+1; [[ratingArray oblectAtIndex: e] intValue] > [[ratingArray oblectAtIndex: z] intValue] && z < [ratingArray count]; z++ ){
+            for (int z = e+1; [[ratingArray objectAtIndex: e] intValue] > [[ratingArray objectAtIndex: z] intValue] && z < [ratingArray count]; z++ ){
             ++a;//считаем количество команд
             }
         }
