@@ -21,23 +21,23 @@ for (; ![s1 isEqualToString: @""] && ![s2 isEqualToString: @""]; ) {//пока �
 
 	if ([s1 characterAtIndex: 0] > [s2 characterAtIndex: 0]){
 
-		[r appendString: [s1 subStringToIndex: 0] ];
-		[s1  setString: [s1 substringFromIndex:1]];//возвращает строку от символа до конца. то есть урезает первые  этим заменяется s1
+		[r appendString: [[NSString initWithString: s1] subStringToIndex: 0] ];
+		[s1  setString: [[[NSString initWithString: s1] substringFromIndex:1]];//возвращает строку от символа до конца. то есть урезает первые  этим заменяется s1
 
 	} else if ([s1 characterAtIndex: 0]<[s2 characterAtIndex: 0]){
 
-		[r appendString: [s2 subStringToIndex: 0] ];
-		[s2  setString: [s2 substringFromIndex:1]];
+		[r appendString: [[[NSString initWithString: s2] subStringToIndex: 0] ];
+		[s2  setString: [[[NSString initWithString: s2] substringFromIndex:1]];
 
 	} else if ([s1 characterAtIndex: 0]==[s2 characterAtIndex: 0]) {//если первые буквы обинаковы
 
 			if ([s1 characterAtIndex: 1] > [s2 characterAtIndex: 1]) { 
-				[r appendString: [s1 subStringToIndex: 0] ];
-				[s1  setString: [s1 substringFromIndex:1]];
+				[r appendString: [[[NSString initWithString: s1] subStringToIndex: 0] ];
+				[s1  setString: [[[NSString initWithString: s1] substringFromIndex:1]];
 
 			} else if([s1 characterAtIndex: 1] < [s2 characterAtIndex: 1]){
-				[r appendString: [s2 subStringToIndex: 0] ];
-				[s2  setString: [s2 substringFromIndex:1]];
+				[r appendString: [[[NSString initWithString: s2] subStringToIndex: 0] ];
+				[s2  setString: [[[NSString initWithString: s2] substringFromIndex:1]];
 			}
 	}
 
